@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 import './global.css';
 import './app.css';
 import './aside.css';
@@ -9,11 +8,8 @@ import api from './services/api';
 import DevItem from './components/DevItem';
 import DevForm from './components/DevForm';
 
-
-
 function App() {
   const [devs, setDevs] = useState([]);
-
   
   useEffect(()=>{
     async function loadDevs(){
@@ -31,6 +27,20 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
+  async function handleDropDev(id){
+    await api.delete('/devs/'+id);
+    
+    devs.indexOf(id, 1);
+    
+    console.log(devs);
+    
+    devs = devs.filter()
+
+    setDevs([...devs]);
+    
+    console.log(devs);  
+  }
+
   return (
     <div id="app">
       <aside>
@@ -41,7 +51,7 @@ function App() {
       <main>
         <ul>
           {devs.map(dev=>(
-            <DevItem key={dev._id} dev={dev}/>
+            <DevItem key={dev._id} dev={dev} onClick={handleDropDev} />
           ))}
         </ul>
       </main>

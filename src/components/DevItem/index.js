@@ -1,7 +1,14 @@
-import React from 'react';
+import React  from 'react';
 import './styles.css';
 
-function DevItem({dev}){
+function DevItem({dev, onClick}){
+    
+    async function handleClick(e){
+        e.preventDefault();
+
+        await onClick(dev._id);
+    }
+
     return(
         <li className="dev-item">
             <header>
@@ -13,6 +20,12 @@ function DevItem({dev}){
             </header>
             <p>{dev.bio}</p>
             <a href={`https://github.com/${dev.gtihub_username}`}>Acessar perfil do github</a>
+            <br/>
+            <button 
+                className="button"
+                onClick={handleClick}
+            >
+            excluir</button>
         </li>
     )
 }
