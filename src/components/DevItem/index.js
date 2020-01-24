@@ -19,13 +19,9 @@ function DevItem({dev, onClick}){
                 </div>
             </header>
             <p>{dev.bio}</p>
-            <a href={`https://github.com/${dev.gtihub_username}`}>Acessar perfil do github</a>
+            <a href={`https://github.com/${dev.github_username}`} target="_blank">Acessar perfil do github</a>
             <br/>
-            <button 
-                className="button"
-                onClick={handleClick}
-            >
-            excluir</button>
+            <a className="deleteDev" onClick={handleClick}>excluir</a>
         </li>
     )
 }
