@@ -30,15 +30,17 @@ function App() {
   async function handleDropDev(id){
     await api.delete('/devs/'+id);
     
-    devs.indexOf(id, 1);
-    
-    console.log(devs);
-    
-    devs = devs.filter()
+        
+    const newDevs = devs.filter((value, index, array)=>{
+      return value._id !== id;
+    });
 
-    setDevs([...devs]);
+
+    console.log(newDevs);
+
+    setDevs([...newDevs]);
     
-    console.log(devs);  
+    console.log(newDevs);  
   }
 
   return (
